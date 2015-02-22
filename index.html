@@ -27,16 +27,16 @@
 				</style>
 				<script src="https://maps.googleapis.com/maps/api/js"></script>
 				<script>
-					function initialize() {
+					function initialize(lat, lng) {
 						var mapCanvas = document.getElementById('map-canvas');
 						var mapOptions = {
-							center: new google.maps.LatLng(33.64548239488949, -117.84314266406),
+							center: new google.maps.LatLng(lat, lng),
 							zoom: 15,
 							mapTypeId: google.maps.MapTypeId.ROADMAP
 						}
 						var map = new google.maps.Map(mapCanvas, mapOptions)
 					}
-					google.maps.event.addDomListener(window, 'load', initialize);
+				//google.maps.event.addDomListener(window, 'load', initialize);
 				</script>
 				
 				<script>
@@ -52,20 +52,28 @@
 					{
 						var myuserid = "b";
 						var mypswrd = "p";
+						var lat = 33.64548239488949;
+						var lng = -117.84314266406;
 						if(form.userid.value == myuserid && form.pswrd.value == mypswrd)
 						{
-							alert("Hello");
+							//alert("Hello");
 							show('googleMaps');
 							show('logoutButton');
 							hide('loginForm');
-							google.maps.event.trigger(window, "resize");
-							map.setCenter(LatLng);
+							initialize(lat, lng);
 						}
 						else
 						{
 							alert("Error Password or Username is incorrect.");
 						}
 					}
+				
+				function moveToLocation(lat, lng)
+				{
+					var center = new google.maps.LatLng(lat, lng);
+					// using global variable:
+					map.panTo(center);
+				}
 				
 					function hide(id)
 					{
@@ -75,7 +83,6 @@
 					function show(id)
 					{
 						document.getElementById(id).style.display = "block";
-						document.getElementById(id).style.visibility = "visible";
 					}
 				
 					function logout()
