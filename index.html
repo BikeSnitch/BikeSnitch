@@ -47,6 +47,44 @@
 
 					}
 				</script>
+				<script language="javascript">
+					function check(form)
+					{
+						var myuserid = "b";
+						var mypswrd = "p";
+						if(form.userid.value == myuserid && form.pswrd.value == mypswrd)
+						{
+							alert("Hello");
+							show('googleMaps');
+							show('logoutButton');
+							hide('loginForm');
+							google.maps.event.trigger(window, "resize");
+							map.setCenter(LatLng);
+						}
+						else
+						{
+							alert("Error Password or Username is incorrect.");
+						}
+					}
+				
+					function hide(id)
+					{
+						document.getElementById(id).style.display = "none";
+					}
+				
+					function show(id)
+					{
+						document.getElementById(id).style.display = "block";
+						document.getElementById(id).style.visibility = "visible";
+					}
+				
+					function logout()
+					{
+						show('loginForm');
+						hide('logoutButton');
+						hide('googleMaps');
+					}
+				</script>
 			</head>
 			<div id="container">
 				<p class="tagline"></p>
@@ -62,47 +100,10 @@
 						</div>
 						<span class="blc"></span><span class="trc"></span>
 					</div>
-					<article class="markdown-body">
+					<article id="markdown-body">
 						<h3 align=center> Welcome to BikeSnitch! </h3>
-						<h1>Login</h1>
-						<form name="login">
-							<br>Username &nbsp;<input type="text" name="userid"/></br>
-							<br>Password &nbsp;&nbsp;<input type="password" name="pswrd"/></br>
-							<br>
-								<input type="button" onclick="check(this.form)" value="Login"/>
-								<input type="reset" value="Cancel"/>
-							</br>
-						</form>
 						<div>
 						</div>
-						<div id="map-canvas" style="display: none"></div>
-						<script language="javascript">
-							function check(form)
-							{
-								var myuserid = "b";
-								var mypswrd = "p";
-								if(form.userid.value == myuserid && form.pswrd.value == mypswrd)
-								{
-									alert("Hello");
-									show('map-canvas');
-								}
-								else
-								{
-									alert("Error Password or Username is incorrect.");
-								}
-							}
-						
-							function hide(id)
-							{
-								document.getElementById(id).style.display = "none";
-							}
-						
-							function show(id)
-							{
-								document.getElementById(id).style.display = "block";
-							}
-						</script>
-
 						<!--<p>
 							DESCRIPTION OF WHAT WE DO HERE
 						</p> -->
@@ -111,6 +112,22 @@
 						<p>
 							DESCRIPTION
 						</p> -->
+					</article>
+					<article id="loginForm">
+						<h1>Login</h1>
+						<form name="login">
+							Username &nbsp;<input type="text" name="userid"/>
+							<br>Password &nbsp;&nbsp;<input type="password" name="pswrd"/></br>
+							<br>
+							<input type="button" onclick="check(this.form)" value="Login"/>
+							<input type="reset" value="Cancel"/>
+							</br>
+						</form>
+					</article>
+					<input id="logoutButton" type="button" onclick="logout()" value="Logout" style="display: none"/>
+					<br></br>
+					<article id="googleMaps" style="display: none">
+						<div id="map-canvas"></div>
 					</article>
 				</div>
 			</div>
