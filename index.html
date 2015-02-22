@@ -64,7 +64,45 @@
 					</div>
 					<article class="markdown-body">
 						<h3 align=center> Welcome to BikeSnitch! </h3>
-						<div id="map-canvas"></div>
+						<h1>Login</h1>
+						<form name="login">
+							<br>Username &nbsp;<input type="text" name="userid"/></br>
+							<br>Password &nbsp;&nbsp;<input type="password" name="pswrd"/></br>
+							<br>
+								<input type="button" onclick="check(this.form)" value="Login"/>
+								<input type="reset" value="Cancel"/>
+							</br>
+						</form>
+						<div>
+						</div>
+						<div id="map-canvas" style="display: none"></div>
+						<script language="javascript">
+							function check(form)
+							{
+								var myuserid = "b";
+								var mypswrd = "p";
+								if(form.userid.value == myuserid && form.pswrd.value == mypswrd)
+								{
+									alert("Hello");
+									show('map-canvas');
+								}
+								else
+								{
+									alert("Error Password or Username is incorrect.");
+								}
+							}
+						
+							function hide(id)
+							{
+								document.getElementById(id).style.display = "none";
+							}
+						
+							function show(id)
+							{
+								document.getElementById(id).style.display = "block";
+							}
+						</script>
+
 						<!--<p>
 							DESCRIPTION OF WHAT WE DO HERE
 						</p> -->
