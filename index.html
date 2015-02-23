@@ -25,6 +25,7 @@
 						
 					}
 				</style>
+				
 				<script src="https://maps.googleapis.com/maps/api/js"></script>
 				<script>
 					function initialize(lat, lng) {
@@ -59,7 +60,9 @@
 							//alert("Hello");
 							show('googleMaps');
 							show('logoutButton');
+							show('mapinfo-body');
 							hide('loginForm');
+							hide('aboutus-body');
 							initialize(lat, lng);
 						}
 						else
@@ -88,9 +91,22 @@
 					function logout()
 					{
 						show('loginForm');
+						show('aboutus-body');
 						hide('logoutButton');
 						hide('googleMaps');
+						hide('mapinfo-body')
 					}
+				</script>
+			</head>
+			
+			<head>
+				<script src="http://bikesnitch.github.io/gpstest/"></script>
+				<script>
+					$(function() {
+					  $.get('foo.html', function(data) {
+							$('#text-file-container').html(data);
+							});
+					  });
 				</script>
 			</head>
 			<div id="container">
@@ -120,6 +136,20 @@
 							DESCRIPTION
 						</p> -->
 					</article>
+					<article id="aboutus-body">
+						<h3> About Us </h3>
+						<div>
+						</div>
+						<div id="text-file-container"></div>
+						<p>
+							DESCRIPTION OF WHAT WE DO HERE
+						</p>
+						
+						<!--<pre><h3>About Us:</h3></pre>
+						 <p>
+							DESCRIPTION
+						 </p> -->
+					</article>
 					<article id="loginForm">
 						<h1>Login</h1>
 						<form name="login">
@@ -132,7 +162,9 @@
 						</form>
 					</article>
 					<input id="logoutButton" type="button" onclick="logout()" value="Logout" style="display: none"/>
-					<br></br>
+					<article id="mapinfo-body" style="display: none">
+						<h3>The location of your bike:</h3>
+					</article>
 					<article id="googleMaps" style="display: none">
 						<div id="map-canvas"></div>
 					</article>
