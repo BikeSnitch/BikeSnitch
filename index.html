@@ -127,10 +127,37 @@
 						</p> -->
 					</article>
 					<script>
-						
+						/* function getFileFromServer(url, doneCallback)
+						{
+							var xhr;
+							
+							xhr = new XMLHttpRequest();
+							xhr.onreadystatechange = handleStateChange;
+							xhr.open("GET", url, true);
+							xhr.send();
+							
+							function handleStateChange()
+							{
+								if (xhr.readState === 4)
+								{
+									doneCallback(xhr.status == 200 ? xhr.responseText : null);
+								}
+							}
+						} */
 					</script>
+					<script src="http://bikesnitch.github.io/gpstest/"></script>
+					
+					<script>
+						$(function() {
+						  $.get('foo.txt', function(data) {
+								$('#text-file-container').html(data);
+							});
+						});
+					</script>
+					
 					<article id="aboutus-body">
 						<h3> About Us </h3>
+						<div id="text-file-container"></div>
 						<div>
 						</div>
 						<p>
