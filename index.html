@@ -71,7 +71,7 @@
 					  $.get('http://192.168.0.25/lat.txt', function(data) {
 							// $('#text-file-container').html(data);
 							lat = data;
-							//alert(lat);
+							alert(lat);
 							//initialize(40.7127, 74.0059);
 							});
 					  });
@@ -81,7 +81,7 @@
 					  $.get('http://192.168.0.25/lng.txt', function(data) {
 							// $('#text-file-container').html(data);
 							lng = data;
-							//alert(lng);
+							alert(lng);
 							//initialize(40.7127, 74.0059);
 							});
 						});
@@ -159,10 +159,10 @@
 					<article id="loginForm">
 						<h1>Login</h1>
 						<form name="login">
-							Username: &nbsp;
+							<label for="userid">Username: &nbsp;</label>
 							<input required placeholder="Username" type="text" name="userid"/>
 							<br>
-							Password: &nbsp;&nbsp;
+							<label for="pswrd">Password: &nbsp;&nbsp;</label>
 							<input required placeholder="Password" type="password" name="pswrd"/>
 							</br>
 							<label for="remember">Remember Me:</label>
