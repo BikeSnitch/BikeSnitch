@@ -7,6 +7,7 @@
 					<link rel="stylesheet" href="stylesheets/pygment_trac.css">
 						<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 						<script type="text/javascript" src="javascripts/script.js"></script>
+						<script src="https://maps.googleapis.com/maps/api/js"></script>
 						<title>Bikesnitch</title>
 						<meta name="description" content="">
 							<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,17 +26,24 @@
 						
 					}
 				</style>
-				
-				<script src="https://maps.googleapis.com/maps/api/js"></script>
 				<script>
-					function initialize(lat, lng) {
+					function initialize(lat, lng)
+					{
 						var mapCanvas = document.getElementById('map-canvas');
-						var mapOptions = {
+						var mapOptions =
+						{
 							center: new google.maps.LatLng(lat, lng),
 							zoom: 15,
 							mapTypeId: google.maps.MapTypeId.ROADMAP
 						}
 						var map = new google.maps.Map(mapCanvas, mapOptions)
+						
+						var marker = new google.maps.Marker
+						({
+							position: new google.maps.LatLng(lat, lng),
+							map: map,
+							title: 'Your Bike'
+						})
 					}
 				//google.maps.event.addDomListener(window, 'load', initialize);
 				</script>
@@ -44,17 +52,38 @@
 					function popupAboutUs()
 					{
 						var myWindow = window.open("", "About Us", "width = 500, height = 500");
-						myWindow.document.write("<p>DESCRIPTION OF WHAT WE DO HERE</p>");
+						myWindow.document.write("<p>[JUAN] DESCRIPTION OF WHAT WE DO HERE</p>");
 
 					}
 				</script>
+				<script>
+					$(function() {
+					  //$.get('http://bikesnitch.github.io/gpstest/lat.txt', function(data) {
+					  $.get('http://192.168.0.25/lat.txt', function(data) {
+							// $('#text-file-container').html(data);
+							lat = data;
+							alert(lat);
+							//initialize(40.7127, 74.0059);
+							});
+					  });
+					  
+					  $(function() {
+						//$.get('http://bikesnitch.github.io/gpstest/lng.txt', function(data) {
+						$.get('http://192.168.0.25/lng.txt', function(data) {
+							  // $('#text-file-container').html(data);
+							  lng = data;
+							  alert(lng);
+							  //initialize(40.7127, 74.0059);
+							  });
+						});
+				</script>
 				<script language="javascript">
+					var lat = 33.64548239488949;
+					var lng = -117.84314266406;
 					function check(form)
 					{
 						var myuserid = "b";
 						var mypswrd = "p";
-						var lat = 33.64548239488949;
-						var lng = -117.84314266406;
 						if(form.userid.value == myuserid && form.pswrd.value == mypswrd)
 						{
 							//alert("Hello");
@@ -70,13 +99,6 @@
 							alert("Error Password or Username is incorrect.");
 						}
 					}
-				
-				function moveToLocation(lat, lng)
-				{
-					var center = new google.maps.LatLng(lat, lng);
-					// using global variable:
-					map.panTo(center);
-				}
 				
 					function hide(id)
 					{
@@ -96,6 +118,7 @@
 						hide('googleMaps');
 						hide('mapinfo-body')
 					}
+				
 				</script>
 			</head>
 			<div id="container">
@@ -115,58 +138,14 @@
 					<article id="markdown-body">
 						<h3 align=center> Welcome to BikeSnitch! </h3>
 						<div id="text-file-container"></div>
-						<div>
-						</div>
-						<!--<p>
-							DESCRIPTION OF WHAT WE DO HERE
-						</p> -->
-						
-						<!--<pre><h3>About Us:</h3></pre>
-						<p>
-							DESCRIPTION
-						</p> -->
 					</article>
-					<script>
-						/* function getFileFromServer(url, doneCallback)
-						{
-							var xhr;
-							
-							xhr = new XMLHttpRequest();
-							xhr.onreadystatechange = handleStateChange;
-							xhr.open("GET", url, true);
-							xhr.send();
-							
-							function handleStateChange()
-							{
-								if (xhr.readState === 4)
-								{
-									doneCallback(xhr.status == 200 ? xhr.responseText : null);
-								}
-							}
-						} */
-					</script>
-					<script src="http://bikesnitch.github.io/gpstest/">
-				
-						$(function() {
-						  $.get('foo.txt', function(data) {
-								$('#text-file-container').html(data);
-							});
-						});
-					</script>
-					
 					<article id="aboutus-body">
-						<h3> About Us </h3>
 						<div id="text-file-container"></div>
 						<div>
 						</div>
-						<p>
-							DESCRIPTION OF WHAT WE DO HERE
-						</p>
-						
-						<!--<pre><h3>About Us:</h3></pre>
-						 <p>
-							DESCRIPTION
-						 </p> -->
+						<h5>
+							[JUAN] MISSION STATEMENT HERE
+						</h5>
 					</article>
 					<article id="loginForm">
 						<h1>Login</h1>
