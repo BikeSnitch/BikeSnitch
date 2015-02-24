@@ -68,7 +68,8 @@
 				<script>
 					$(function() {
 					  //$.get('http://bikesnitch.github.io/gpstest/lat.txt', function(data) {
-					  $.get('http://192.168.0.25/lat.txt', function(data) {
+					  //$.get('http://192.168.0.25/lat.txt', function(data) {
+					  $.get('http://bikesnitch.ddns.net/lat.txt', function(data) {
 							// $('#text-file-container').html(data);
 							lat = data;
 							alert(lat);
@@ -78,7 +79,8 @@
 					  
 					$(function() {
 						//$.get('http://bikesnitch.github.io/gpstest/lng.txt', function(data) {
-					  $.get('http://192.168.0.25/lng.txt', function(data) {
+					  //$.get('http://192.168.0.25/lng.txt', function(data) {
+					  $.get('http://bikesnitch.ddns.net/lng.txt', function(data) {
 							// $('#text-file-container').html(data);
 							lng = data;
 							alert(lng);
