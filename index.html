@@ -61,15 +61,16 @@
 					function popupAboutUs()
 					{
 						var myWindow = window.open("", "About Us", "width = 500, height = 500");
-						myWindow.document.write("<p>[JUAN] DESCRIPTION OF WHAT WE DO HERE</p>");
-
+						myWindow.document.write("<p>Bike theft has been a large public crime, especially on UC campuses. For our project we will be designing an onboard system that integrates Bluetooth connectivity, GPS tracking, and a renewable power source. Our project’s goal is to reduce the crime rate of stolen bicycles by preventing and locating them.
+												
+</p>");
 					}
 				</script>
 				<script>
 					$(function() {
 					  //$.get('http://bikesnitch.github.io/gpstest/lat.txt', function(data) {
-					  //$.get('http://192.168.0.25/lat.txt', function(data) {
-					  $.get('http://bikesnitch.ddns.net/lat.txt', function(data) {
+					  $.get('http://169.234.43.220/lat.txt', function(data) {
+					  //$.get('http://bikesnitch.ddns.net/lat.txt', function(data) {
 							// $('#text-file-container').html(data);
 							lat = data;
 							alert(lat);
@@ -79,8 +80,8 @@
 					  
 					$(function() {
 						//$.get('http://bikesnitch.github.io/gpstest/lng.txt', function(data) {
-					  //$.get('http://192.168.0.25/lng.txt', function(data) {
-					  $.get('http://bikesnitch.ddns.net/lng.txt', function(data) {
+					  $.get('http://169.234.43.220/lng.txt', function(data) {
+					  //$.get('http://bikesnitch.ddns.net/lng.txt', function(data) {
 							// $('#text-file-container').html(data);
 							lng = data;
 							alert(lng);
@@ -111,16 +112,6 @@
 						}
 					}
 				
-					function hide(id)
-					{
-						document.getElementById(id).style.display = "none";
-					}
-				
-					function show(id)
-					{
-						document.getElementById(id).style.display = "block";
-					}
-				
 					function logout()
 					{
 						show('loginForm');
@@ -130,6 +121,46 @@
 						hide('mapinfo-body')
 					}
 				
+					function registerButton()
+					{
+						show('registerForm');
+						hide('loginForm');
+						hide('aboutus-body');
+						hide('logoutButton');
+						hide('googleMaps');
+						hide('mapinfo-body')
+					}
+				
+					function registerForm(form)
+					{
+						if(form.register_password.value == form.confirm_password.value)
+						{
+							alert("Start: FileIO");
+							var file = new ActiveXObject("Scripting.FileSystemObject");
+							var ots = file.OpenTextFile("/Users/Davis/Documents/BikeSnitch/foo.txt", 2, true);
+							var str = "Hello World";
+							
+							ots.Write(str);
+							ots.Close();
+							ots = null;
+							fso = null;
+							alert("Done: FileIO");
+						} else
+						{
+							alert("The password you enter does not match.");
+						}
+						
+					}
+				
+					function hide(id)
+					{
+						document.getElementById(id).style.display = "none";
+					}
+				
+					function show(id)
+					{
+						document.getElementById(id).style.display = "block";
+					}
 				</script>
 			</head>
 			<div id="container">
@@ -137,12 +168,9 @@
 				<div id="main" role="main">
 					<div class="download-bar">
 						<div class="inner" align="right">
+							<button onclick ="registerButton()">Register</button>
 							<button onclick ="popupAboutUs()">About Us</button>
 							<button onclick ="parent.location='mailto:bikesnitch@gmail.com?subject=Bike Snitch | Contact Us'">Contact Us</button>
-							<!--
-							<a href="https://www.google.com" class="download-button"><span>Find My Bike</center></span></a>
-							<a href="https://www.google.com" class="download-button"><span>My Battery Percentage</span></a>
-							-->
 						</div>
 						<span class="blc"></span><span class="trc"></span>
 					</div>
@@ -171,6 +199,21 @@
 							<input type="button" onclick="check(this.form)" value="Login"/>
 							<input type="reset" value="Cancel"/>
 							</br>
+						</form>
+					</article>
+					<article id="registerForm" style="display:none">
+						<h1>Register</h1>
+						<form name="register">
+							<label>Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+							<input type="text" name="register_userid" id="register_userid"/>
+							<br/>
+							<label>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+							<input type="password" name="register_password" id="register_password"/>
+							<br/>
+							<label>Confirm Password:</label>
+							<input type="password" name="confirm_password" id="confirm_password"/>
+							<br/>
+							<input type="button" onclick="registerForm(this.form)" name="Submit" id="Submit" value="Submit"/>
 						</form>
 					</article>
 					<input id="logoutButton" type="button" onclick="logout()" value="Logout" style="display: none"/>
