@@ -11,7 +11,7 @@
 						<title>Bikesnitch</title>
 						<meta name="description" content="">
 							<meta name="viewport" content="width=device-width,initial-scale=1">
-								</head> 
+								</head>
 	<body>
 		<div class="wrapper">
 			<header>
@@ -61,9 +61,7 @@
 					function popupAboutUs()
 					{
 						var myWindow = window.open("", "About Us", "width = 500, height = 500");
-						myWindow.document.write("<p>Bike theft has been a large public crime, especially on UC campuses. For our project we will be designing an onboard system that integrates Bluetooth connectivity, GPS tracking, and a renewable power source. Our project’s goal is to reduce the crime rate of stolen bicycles by preventing and locating them.
-												
-</p>");
+						myWindow.document.write("<h4><p>Bike thefts on university campuses occur each and every year. The number of recovered bikes remains low and stays the same from year to year. For a student commuter, having their bicycle stolen not only affects their commuting schedule but their budget as well.</p><p>As a result, BikeSnitch is a device that both student bicyclists and daily bicycle commuters can utilize. BikeSnitch will pinpoint a bike’s location and reduce the stress in the recovery and retrieval process with utilization of its GPS capability. BikeSnitch adds security assurance beyond what a chain lock provides and gives the bicycle owner piece of mind that they have the capability to locate their bicycle if it ever gets stolen.</p><p>Raul Madrigal Jr. is a computer engineer and the team captain of team DJR. He has a good understanding of embedded systems. He enjoys setting up the hardware of the embedded system and then programming the necessary components to make the system work as a whole, which is why he is working on the MCU Control Subsystem. He is determined, timely, and a hard worker and he will do all that he can to have the project done by next quarter. Juan Meza is an electrical engineer and a team member of DJR. Juan is in charge of the design of the Power Subsystem. Juan has a passion for designing low powered systems that can be powered by free energy sources. Davis Vang is a computer engineer and a team member of DJR. He has prior experience working with the Google Maps library and programming websites using Javascript and HTML. His responsibilities for the project is to manage and integrate the GPS Subsystem.</p></h4>");
 					}
 				</script>
 				<script>
@@ -94,9 +92,19 @@
 					var lng = -117.84314266406;
 					function check(form)
 					{
-						var myuserid = "b";
-						var mypswrd = "p";
-						if(form.userid.value == myuserid && form.pswrd.value == mypswrd)
+						var davisID		= "davis";
+						var davisPWD	= "cpe2015";
+						var raulID		= "raul";
+						var raulPWD		= "cpe2015";
+						var juanID		= "juan";
+						var juanPWD		= "ee2015";
+						var defaultID	= "usertest";
+						var defaultPWD	= "wordpass";
+						
+						if((form.userid.value == davisID && form.pswrd.value == davisPWD) ||
+						   (form.userid.value == raulID && form.pswrd.value == raulPWD) ||
+						   (form.userid.value == juanID && form.pswrd.value == juanPWD) ||
+						   (form.userid.value == defaultID && form.pswrd.value == defaultPWD))
 						{
 							//alert("Hello");
 							show('googleMaps');
@@ -106,6 +114,7 @@
 							hide('aboutus-body');
 							initialize(lat, lng);
 						}
+						
 						else
 						{
 							alert("Error Password or Username is incorrect.");
@@ -183,7 +192,7 @@
 						<div>
 						</div>
 						<h5>
-							[JUAN] MISSION STATEMENT HERE
+						<center>Bike theft has been a large public crime, especially on UC campuses. For our project we will be designing an onboard system that integrates Bluetooth connectivity, GPS tracking, and a renewable power source. Our project’s goal is to reduce the crime rate of stolen bicycles by preventing and locating them.</center>
 						</h5>
 					</article>
 					<article id="loginForm">
